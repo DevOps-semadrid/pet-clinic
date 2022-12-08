@@ -3,8 +3,8 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-pool:
-  vmImage: ubuntu-latest
+pool: 'Default'
+  ##vmImage: ubuntu-latest
 
 steps:
 - script: echo Hello, world!
