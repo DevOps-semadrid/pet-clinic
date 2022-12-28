@@ -6,6 +6,8 @@
 pool:
   vmImage: ubuntu-latest
 
+steps:
+
 - task: Gradle@3
   inputs:
     gradleWrapperFile: 'gradlew'
@@ -17,3 +19,11 @@ pool:
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'sonarCloud'
+    organization: 'devops-semadrid'
+    projectKey: 'DevOps-semadrid_pet-clinic'
+    projectName: 'pet-clinic'
+  displayName: 'Prepare SonarCloud'
+  
