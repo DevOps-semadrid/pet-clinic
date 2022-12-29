@@ -40,10 +40,15 @@ steps:
     spotBugsAnalysis: false
   displayName: SonarCloud Analysis
 
+- task: DockerInstaller@0
+  inputs:
+    dockerVersion: '17.09.0-ce'
+  displayName: Docker Installer
 - task: Docker@2
   inputs:
     containerRegistry: 'Docker'
     command: 'login'
+  displayName: Docker Login
 
 - task: Docker@2
   inputs:
@@ -52,6 +57,7 @@ steps:
     command: 'build'
     Dockerfile: '**/Dockerfile'
     tags: 'latest'
+  displayName: Docker build
     
 - task: Docker@2
   inputs:
@@ -59,4 +65,5 @@ steps:
     repository: 'pet-clinic'
     command: 'push'
     tags: 'latest'
+  displayName: Docker Push
 
