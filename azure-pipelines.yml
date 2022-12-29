@@ -63,3 +63,8 @@ steps:
     tags: 'latest'
   displayName: Docker Push
 
+- task: KubectlInstaller@0
+  inputs:
+    kubectlVersion: 'latest'
+  displayName: Instal kubectl
+
