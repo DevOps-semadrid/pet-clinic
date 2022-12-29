@@ -39,3 +39,24 @@ steps:
     sonarQubeGradlePluginVersion: '3.3'
     spotBugsAnalysis: false
   displayName: SonarCloud Analysis
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker'
+    command: 'login'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker'
+    repository: 'pet-clinic'
+    command: 'build'
+    Dockerfile: '**/Dockerfile'
+    tags: 'latest'
+    
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker'
+    repository: 'pet-clinic'
+    command: 'push'
+    tags: 'latest'
+
